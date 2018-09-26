@@ -1,20 +1,61 @@
 import React from 'react';
 import { FAB, Portal } from 'react-native-paper';
+import { CameraRoll, View, PermissionsAndroid, KeyboardAvoidingView, AsyncStorage } from 'react-native';
+import pickDevicePhotos from './pickDevicePhotos';
+import { createStackNavigator } from 'react-navigation';
+import AddNewItem from './imagepreview';
+
+const AppNavigator = createStackNavigator({
+  form: {
+    screen: AddNewItem
+  },
+});
 
 export default class MyComponent extends React.Component {
   state = {
     open: false,
   };
 
+  async onPressHandle(media) {
+      //do your stuff here. scroll screen up
+      console.log('Save pressed ' + media);
+      //write if else based on media whether gallery or campera to intent
+
+      try {
+          const granted = await PermissionsAndroid.request(
+            PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+            {
+              'title': 'Access Storage',
+              'message': 'Access Storage for the pictures'
+            }
+          )
+          if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+            console.log("You can use read from the storage");
+            pickDevicePhotos();
+          } else {
+            console.log("Storage permission denied")
+          }
+        } catch (err) {
+          console.warn(err)
+        }
+
+      // try {
+      //     await AsyncStorage.setItem('closet:items', {name: 'manash'});
+      //   } catch (error) {
+      //     // Error saving data
+      //   }
+  }
+
   render() {
     return (
+        
         <FAB.Group style={{position: 'absolute', top: 1, right: 1}}
           open={this.state.open}
           icon={this.state.open ? 'today' : 'add'}
           actions={[
-            { icon: 'add', onPress: () => console.log('Pressed add') },
-            { icon: 'photo', label: 'Pick from Gallery', onPress: () => console.log('Pressed Gallery')},
-            { icon: 'camera', label: 'Take a Picture', onPress: () => console.log('Pressed Picture') },
+            //{ icon: 'add', onPress: () => console.log('Pressed add') },
+            { icon: 'photo', label: 'Pick from Gallery', onPress: () => this.onPressHandle('photo')},
+            { icon: 'camera', label: 'Take a Picture', onPress: () => this.onPressHandle('camera') },
             //{ icon: 'notifications', label: 'Remind', onPress: () => console.log('Pressed notifications') },
           ]}
           onStateChange={({ open }) => this.setState({ open })}
