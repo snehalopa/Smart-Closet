@@ -76,7 +76,7 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isEmpty: true
+            isEmpty: false
 
         };
 

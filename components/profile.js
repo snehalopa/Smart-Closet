@@ -36,14 +36,15 @@ export default class profile extends Component {
             Name: 
           </Text>
           <Text style={{minWidth: '100%', fontFamily: 'sans-serif', fontSize: 25, marginTop: 5}}>
-            Settings:
+            Settings
           </Text>
           <Text style={{minWidth: '100%', fontFamily: 'sans-serif', fontSize: 25, marginTop: 5}}>
-            Help:
+            Help
           </Text>
           <Button icon="add-a-photo" mode="contained" onPress={() => console.log('Pressed')}>
             Logout
           </Button>
+          
       
           
         </ScrollView>
