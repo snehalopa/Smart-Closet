@@ -31,7 +31,15 @@ const emptyView =
 ;
 
 const recommendView =
-<View style={{ alignItems: 'center', justifyContent: 'center',}}>
+<View>
+    <Appbar.Header>
+        <Appbar.Content
+        title="My Closet App"
+        subtitle="Todays recommendation"
+        />
+    </Appbar.Header>
+
+    <View style={{ alignItems: 'center', justifyContent: 'center',}}>
 
     <Image
     source={require('./sample_silktop.jpeg')}
@@ -66,8 +74,10 @@ const recommendView =
     />
 
     <Text> Here is my recomendation from me</Text>
-    
-</View>;
+
+    </View>
+</View>
+;
 
 
 

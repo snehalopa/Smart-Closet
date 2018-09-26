@@ -7,7 +7,6 @@ export default class imagepreview extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            offset: {x:0, y:0 },
             name: '',
             category_type: '',
             ocassion_type: '',

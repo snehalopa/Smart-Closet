@@ -4,11 +4,13 @@ import {
   Text,
   View,
   TextInput,
-  Button,
+  //Button,
   TouchableHighlight,
   Image,
   Alert
 } from 'react-native';
+
+import { DefaultTheme, Button, Appbar } from "react-native-paper";
 
 export default class LoginView extends Component {
 y
@@ -34,7 +36,7 @@ y
           <Image style={styles.inputIcon} source={{uri: 'https://static.thenounproject.com/png/101346-200.png'}}/>
           <TextInput style={styles.inputs}
               placeholder="Name"
-              keyboardType="text"
+              keyboardType="default"
               underlineColorAndroid='transparent'
               onChangeText={(name) => this.setState({name})}/>
         </View>
@@ -50,7 +52,7 @@ y
           <Image style={styles.inputIcon} source={{uri: 'http://www.groomix.com/pages/images/user-icon.png'}}/>
           <TextInput style={styles.inputs}
               placeholder="Username"
-              keyboardType="text"
+              keyboardType="default"
               underlineColorAndroid='transparent'
               onChangeText={(username) => this.setState({username})}/>
         </View>
@@ -125,7 +127,7 @@ const styles = StyleSheet.create({
     borderRadius:30,
   },
   loginButton: {
-    backgroundColor: "#00b5ec",
+    backgroundColor: DefaultTheme.colors.primary,
   },
   loginText: {
     color: 'white',

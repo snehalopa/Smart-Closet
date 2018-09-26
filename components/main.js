@@ -70,12 +70,22 @@ export default class ButtomNavigationExample extends React.Component {
       <BottomNavigation
         navigationState={this.state}
         onIndexChange={index => this.setState({ index })}
-        renderScene={BottomNavigation.SceneMap({
-          home: Home,
-          closet: Closet,
-          profile: Profile,
+        // renderScene={BottomNavigation.SceneMap({
+        //   home: Home,
+        //   closet: Closet,
+        //   profile: Profile,
           
-        })}
+        // })}
+        renderScene={({ route, jumpTo }) => {
+            switch (route.key) {
+              case 'home':
+                return <Home jumpTo={jumpTo}/>;
+              case 'closet':
+                return <Closet jumpTo={jumpTo} navigation={this.props.navigation}/>;
+              case 'profile':
+                return <Profile jumpTo={jumpTo} />;
+            }
+        }}
       />
     );
    

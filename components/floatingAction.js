@@ -5,11 +5,11 @@ import pickDevicePhotos from './pickDevicePhotos';
 import { createStackNavigator } from 'react-navigation';
 import AddNewItem from './imagepreview';
 
-const AppNavigator = createStackNavigator({
-  form: {
-    screen: AddNewItem
-  },
-});
+// const AppNavigator = createStackNavigator({
+//   form: {
+//     screen: AddNewItem
+//   },
+// });
 
 export default class MyComponent extends React.Component {
   state = {
@@ -47,24 +47,24 @@ export default class MyComponent extends React.Component {
   }
 
   render() {
+    console.log(this.props.navigation)
     return (
-        
-        <FAB.Group style={{position: 'absolute', top: 1, right: 1}}
-          open={this.state.open}
-          icon={this.state.open ? 'today' : 'add'}
-          actions={[
-            //{ icon: 'add', onPress: () => console.log('Pressed add') },
-            { icon: 'photo', label: 'Pick from Gallery', onPress: () => this.onPressHandle('photo')},
-            { icon: 'camera', label: 'Take a Picture', onPress: () => this.onPressHandle('camera') },
-            //{ icon: 'notifications', label: 'Remind', onPress: () => console.log('Pressed notifications') },
-          ]}
-          onStateChange={({ open }) => this.setState({ open })}
-          onPress={() => {
-            if (this.state.open) {
-              // do something if the speed dial is open
-            }
-          }}
-        />
+          <FAB.Group style={{position: 'absolute', top: 1, right: 1}}
+            open={this.state.open}
+            icon={this.state.open ? 'today' : 'add'}
+            actions={[
+              //{ icon: 'add', onPress: () => console.log('Pressed add') },
+              { icon: 'photo', label: 'Pick from Gallery', onPress: () => {this.props.navigation.navigate("ImagePreview")}},
+              { icon: 'camera', label: 'Take a Picture', onPress: () => this.onPressHandle('camera') },
+              //{ icon: 'notifications', label: 'Remind', onPress: () => console.log('Pressed notifications') },
+            ]}
+            onStateChange={({ open }) => this.setState({ open })}
+            onPress={() => {
+              if (this.state.open) {
+                // do something if the speed dial is open
+              }
+            }}
+          />
     );
   }
 }

@@ -1,12 +1,15 @@
-import { StackNavigator } from "react-navigation";
-import Home from "./Welcome";
+import { createStackNavigator } from "react-navigation";
+import Welcome from "./Welcome";
 import Login from "./Login";
 import SignUp from './signup';
 import Main from './main';
-const AppNavigator = StackNavigator(
+import ImagePreview from './imagepreview';
+import MyComponent from './floatingAction'
+import Closet from './closet';
+const AppNavigator = createStackNavigator(
   {
-    Home: {
-      screen: Home,
+    Welcome: {
+      screen: Welcome,
       navigationOptions: {
         header: null
       }
@@ -14,17 +17,27 @@ const AppNavigator = StackNavigator(
     Login: { 
       screen: Login,
       navigationOptions: () => ({
-        title: `Home`,
+        title: `Login`,
       }),
     },
     SignUp : {
       screen: SignUp,
       navigationOptions: () => ({
-        title: `Home`,
+        title: `SignUp`,
       }),
     },
-   Main : {
+   Main: {
      screen: Main,
+     navigationOptions: () => ({
+       header: null,
+     }),
+   },
+   ImagePreview : {
+     screen: ImagePreview,
+     navigationOptions: () => ({
+      //header: null,
+      title: `Add Item to Closet`,
+    }),
    }
   }
 );

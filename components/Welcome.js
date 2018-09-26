@@ -8,7 +8,7 @@ import {
   Image
 } from "react-native";
 import { Header } from "react-native-elements";
-import { Button } from "react-native-paper";
+import { Button, Appbar } from "react-native-paper";
 import * as Animatable from "react-native-animatable";
 
 export default class Home extends Component {
@@ -38,15 +38,21 @@ export default class Home extends Component {
         style={{ width: "100%", height: "100%",  }}
       >
         <View style={styles.container}>
-          <Header
+          <Appbar.Header style={{alignContent: 'center', justifyContent: 'center',}}>
+            <Appbar.Content
+              title="SMART CLOSET"
+              // subtitle="All Items"
+          />
+          </Appbar.Header>
+          {/* <Header
             placement="left"
-            leftComponent={{ icon: "menu", color: "#fff" }}
+            // leftComponent={{ icon: "menu", color: "#fff" }}
             centerComponent={{
               text: "SMART CLOSET",
               style: { color: "#fff", fontWeight: "bold" }
             }}
-            rightComponent={{ icon: "home", color: "#fff" }}
-          />
+            // rightComponent={{ icon: "home", color: "#fff" }}
+          /> */}
           <Animatable.Text
             animation="zoomInUp"
             iterationCount={9}

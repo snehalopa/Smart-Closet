@@ -4,11 +4,13 @@ import {
   Text,
   View,
   TextInput,
-  Button,
+  // Button,
   TouchableHighlight,
   Image,
   Alert
 } from 'react-native';
+
+import { DefaultTheme, Button, Appbar } from "react-native-paper";
 
 export default class LoginView extends Component {
 
@@ -45,7 +47,6 @@ export default class LoginView extends Component {
         </View>
 
         <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={() => {
-              console.log("###########################################"),
                 this.props.navigation.navigate("Main");
             }}>
           <Text style={styles.loginText} >Login</Text>
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
     borderRadius:30,
   },
   loginButton: {
-    backgroundColor: "#00b5ec",
+    backgroundColor: DefaultTheme.colors.primary,
   },
   loginText: {
     color: 'white',
