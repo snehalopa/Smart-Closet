@@ -14,30 +14,45 @@ import AddNewItem from './imagepreview';
 export default class MyComponent extends React.Component {
   state = {
     open: false,
+    photos: [],
   };
 
   async onPressHandle(media) {
       //do your stuff here. scroll screen up
       console.log('Save pressed ' + media);
       //write if else based on media whether gallery or campera to intent
+      console.log("###############")
 
-      try {
-          const granted = await PermissionsAndroid.request(
-            PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
-            {
-              'title': 'Access Storage',
-              'message': 'Access Storage for the pictures'
-            }
-          )
-          if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-            console.log("You can use read from the storage");
-            pickDevicePhotos();
-          } else {
-            console.log("Storage permission denied")
-          }
-        } catch (err) {
-          console.warn(err)
-        }
+      CameraRoll.getPhotos({
+        first: 20,
+        assetType: 'Photos',
+      })
+      .then(r => {
+        this.setState({ photos: r.edges });
+      })
+      .catch((err) => {
+         //Error Loading Images
+         console.log('Save pressed ERROR ' + err);
+      });
+    
+
+      // try {
+      //     const granted = await PermissionsAndroid.request(
+      //       PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+      //       {
+      //         'title': 'Access Storage',
+      //         'message': 'Access Storage for the pictures'
+      //       }
+      //     )
+      //     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+      //       console.log("You can use read from the storage");
+      //       pickDevicePhotos();
+      //     } else {
+      //       console.log("Storage permission denied")
+      //     }
+      //   } catch (err) {
+      //     console.warn(err)
+      //   }
 
       // try {
       //     await AsyncStorage.setItem('closet:items', {name: 'manash'});
