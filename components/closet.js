@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { ScrollView, View, Image, Dimensions, StyleSheet } from 'react-native';
-import { Text, FAB, Portal, Appbar } from 'react-native-paper';
+import { ScrollView, View, Image, Dimensions, StyleSheet,TouchableHighlight } from 'react-native';
+import { Text, FAB, DefaultTheme, Appbar } from 'react-native-paper';
 import FloatingAction from './floatingAction';
 
-const PHOTOS = Array.from({ length: 4 }).map(
-  (_, i) => `https://unsplash.it/300/300/?random&__id=library${i}`
-);
+// const PHOTOS = Array.from({ length: 12 }).map(
+//   (_, i) => `samplw${i}`
+// );
 export default class Closet extends Component {
 
   // constructor(props) {
@@ -32,15 +32,53 @@ export default class Closet extends Component {
           <Appbar.Action icon="more-vert" onPress={this._onMore} /> */}
         </Appbar.Header>
       
-        <ScrollView contentContainerStyle={styles.content}>
-          {PHOTOS.map(uri => (
-            <View key={uri} style={styles.item}>
-              <Image source={{ uri }} style={styles.photo} />
-              <Text> dress name </Text>
+        <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps='always'>
+        
+        <TouchableHighlight underlayColor={DefaultTheme.colors.primary} style={styles.item} onPress={() => {
+              console.log("###########################################"),
+                this.props.navigation.navigate("Formal");
+            }}      
+        >
+            <View style={{height: '100%', width: '100%', justifyContent: 'center', alignItems: 'center'}}>
+              <Image style={{height: '90%', width: '100%'}} source={{ uri : 'https://dx0woejilafh2.cloudfront.net/sys-master/m0/WE/2017/2/WE5166017906/003/s3details/WE5166017906003-d-grammo.jpg' }}/>
+              <Text> Formal Wear </Text>
             </View>
-          ))}
-          {console.log(this.props.navigation)}
-          <FloatingAction navigation={this.props.navigation}></FloatingAction>
+        </TouchableHighlight>
+
+        <TouchableHighlight underlayColor={DefaultTheme.colors.primary} style={styles.item} onPress={() => {
+              console.log("###########################################"),
+                this.props.navigation.navigate("Formal");
+            }}      
+        >
+            <View style={{height: '100%', width: '100%', justifyContent: 'center', alignItems: 'center'}}>
+              <Image style={{height: '90%', width: '100%'}} source={{ uri : 'https://dx0woejilafh2.cloudfront.net/sys-master/m0/WE/2017/2/WE5166017906/003/s3details/WE5166017906003-d-grammo.jpg' }}/>
+              <Text> Party Wear </Text>
+            </View>
+        </TouchableHighlight>
+
+        <TouchableHighlight underlayColor={DefaultTheme.colors.primary} style={styles.item} onPress={() => {
+              console.log("###########################################"),
+                this.props.navigation.navigate("Formal");
+            }}      
+        >
+            <View style={{height: '100%', width: '100%', justifyContent: 'center', alignItems: 'center'}}>
+              <Image style={{height: '90%', width: '100%'}} source={{ uri : 'https://dx0woejilafh2.cloudfront.net/sys-master/m0/WE/2017/2/WE5166027906/003/s3details/WE5166027906003-e-david.jpg' }}/>
+              <Text> Casual Wear </Text>
+            </View>
+        </TouchableHighlight>
+
+        <TouchableHighlight underlayColor={DefaultTheme.colors.primary} style={styles.item} onPress={() => {
+              console.log("###########################################"),
+                this.props.navigation.navigate("Formal");
+            }}      
+        >
+            <View style={{height: '100%', width: '100%', justifyContent: 'center', alignItems: 'center'}}>
+              <Image style={{height: '90%', width: '100%'}} source={{ uri : 'https://dx0woejilafh2.cloudfront.net/sys-master/m0/WE/2017/2/WE5166017906/003/s3details/WE5166017906003-d-grammo.jpg' }}/>
+              <Text> Tradtional Wear </Text>
+            </View>
+        </TouchableHighlight>
+
+          {/* <FloatingAction navigation={this.props.navigation}></FloatingAction> */}
         </ScrollView>
     </View>
     )

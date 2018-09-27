@@ -83,7 +83,7 @@ export default class ButtomNavigationExample extends React.Component {
               case 'closet':
                 return <Closet jumpTo={jumpTo} navigation={this.props.navigation}/>;
               case 'profile':
-                return <Profile jumpTo={jumpTo} />;
+                return <Profile jumpTo={jumpTo} navigation={this.props.navigation}/>;
             }
         }}
       />

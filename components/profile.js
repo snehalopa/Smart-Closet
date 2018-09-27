@@ -41,7 +41,7 @@ export default class profile extends Component {
           <Text style={{minWidth: '100%', fontFamily: 'sans-serif', fontSize: 25, marginTop: 5}}>
             Help
           </Text>
-          <Button icon="add-a-photo" mode="contained" onPress={() => console.log('Pressed')}>
+          <Button icon="add-a-photo" mode="contained" onPress={() => {console.log('Pressed'),this.props.navigation.navigate("Welcome")}}>
             Logout
           </Button>
           

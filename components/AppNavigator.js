@@ -6,6 +6,7 @@ import Main from './main';
 import ImagePreview from './imagepreview';
 import MyComponent from './floatingAction'
 import Closet from './closet';
+import Formal from './clothes/formal';
 const AppNavigator = createStackNavigator(
   {
     Welcome: {
@@ -37,6 +38,12 @@ const AppNavigator = createStackNavigator(
      navigationOptions: () => ({
       //header: null,
       title: `Add Item to Closet`,
+    }),
+   },
+   Formal: {
+     screen: Formal,
+     navigationOptions: () => ({
+      header: null,
     }),
    }
   }

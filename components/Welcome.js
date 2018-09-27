@@ -7,30 +7,19 @@ import {
   Animated,
   Image
 } from "react-native";
-import { Header } from "react-native-elements";
-import { Button, Appbar } from "react-native-paper";
-import * as Animatable from "react-native-animatable";
+//import { Header } from "react-native-elements";
+import { Button, Appbar, Text } from "react-native-paper";
+//import * as Animatable from "react-native-animatable";
 
 export default class Home extends Component {
   componentWillMount() {
-    this.animatedValue = new Animated.Value(0);
+    
   }
 
   componentDidMount() {
-    Animated.timing(this.animatedValue, {
-      toValue: 1,
-      duration: 1500
-    }).start();
+    
   }
   render() {
-    const interpolateRotation = this.animatedValue.interpolate({
-      inputRange: [0, 1],
-      outputRange: ["0deg", "720deg"]
-    });
-
-    const animatedStyle = {
-      transform: [{ rotate: interpolateRotation }]
-    };
 
     return (
       <ImageBackground
@@ -53,17 +42,14 @@ export default class Home extends Component {
             }}
             // rightComponent={{ icon: "home", color: "#fff" }}
           /> */}
-          <Animatable.Text
-            animation="zoomInUp"
-            iterationCount={9}
-            direction="alternate"
+          <Text
             style={styles.text}
           >
             Welcome
-          </Animatable.Text>
-          <Animated.Text style={[styles.subText, animatedStyle]}>
+          </Text>
+          <Text style={[styles.subText]}>
             to Smart Closet
-          </Animated.Text>
+          </Text>
 
           <Button
             mode="contained"
@@ -85,10 +71,6 @@ export default class Home extends Component {
           >
             SIGN UP
           </Button>
-
-          <Image source={require("./images/smile2.gif")} style={styles.image1}>
-            {this.props.children}
-          </Image>
         </View>
         </ImageBackground>
     );
@@ -120,14 +102,14 @@ const styles = StyleSheet.create({
     marginTop: 10,
     padding: 10
   },
-  image1: {
-    flexGrow: 1,
-    marginTop: 10,
-    width: 130,
-    height: 130,
-    justifyContent: "center",
-    alignItems: "center"
-  }
+  // image1: {
+  //   flexGrow: 1,
+  //   marginTop: 10,
+  //   width: 130,
+  //   height: 130,
+  //   justifyContent: "center",
+  //   alignItems: "center"
+  // }
 });
 
 AppRegistry.registerComponent("Home", () => Home);

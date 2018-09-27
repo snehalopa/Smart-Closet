@@ -12,7 +12,7 @@ const emptyView =
     </Appbar.Header>
     <View style={{ alignItems: 'center', justifyContent: 'center',}}>
         <Image
-        source={require('./slightly_frowning_face_emoji_round_sticker-re5f660b967dc441fbe38bd98d3b590f4_v9waf_8byvr_324.jpg')}
+        source={require('./images/smile5.gif')}
         style={{
             resizeMode: 'contain',
             width: 250,
@@ -86,7 +86,7 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isEmpty: false
+            isEmpty: true
 
         };
 
