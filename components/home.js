@@ -22,7 +22,7 @@ const emptyView =
             alignContent: 'center'
         }}
         />
-        <Text style={{fontFamily: 'monospace', fontStyle: 'italic', fontSize:20 }}>
+        <Text style={{fontStyle: 'italic', fontSize:20 }}>
             Awww!!!
             You have not added any clothes yet. Start by pressing the closet button.
         </Text>
