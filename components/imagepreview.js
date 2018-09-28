@@ -1,51 +1,39 @@
 import React, { Component } from 'react'
-import { Button, Image, CameraRoll, PermissionsAndroid, KeyboardAvoidingView, Text, AsyncStorage, TextInput, Picker } from 'react-native';
+import { Button, Image, CameraRoll, PermissionsAndroid, KeyboardAvoidingView, AsyncStorage, TextInput, Picker } from 'react-native';
 
-
-export default class imagepreview extends Component {
+export default class Imagepreview extends Component {
 
     constructor(props) {
-        super(props);
-        this.state = {
-            name: '',
-            category_type: '',
-            ocassion_type: '',
-        };
-      }
+      super(props);
+      //const { navigation } = props;
+      console.log('99999999999999999999999999999999999999999999999999');
+      const { navigation } = this.props;
+      const photoUri = navigation.getParam('photo'); //will need to pass some default image placeholder as secodn param
+    // const otherParam = navigation.getParam('otherParam', 'some default value');
+      console.log(photoUri);
+      this.state = {
+          photo: photoUri,
+          name: '',
+          category_type: '',
+          ocassion_type: '',
+      };
+    }
 
     async onPressSave() {
         //do your stuff here. scroll screen up
         console.log('Save pressed');
 
-        try {
-            const granted = await PermissionsAndroid.request(
-              PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
-              {
-                'title': 'Access Storage',
-                'message': 'Access Storage for the pictures'
-              }
-            )
-            if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-              console.log("You can use read from the storage")
-            } else {
-              console.log("Storage permission denied")
-            }
-          } catch (err) {
-            console.warn(err)
-          }
-
-
-        CameraRoll.getPhotos({
-            first: 20,
-            assetType: 'Photos',
-          })
-          .then(r => {
-            this.setState({ photos: r.edges });
-          })
-          .catch((err) => {
-             //Error Loading Images
-             console.log('CameraRoll pressed ', err);
-          });
+        // CameraRoll.getPhotos({
+        //     first: 20,
+        //     assetType: 'Photos',
+        //   })
+        //   .then(r => {
+        //     this.setState({ photos: r.edges });
+        //   })
+        //   .catch((err) => {
+        //      //Error Loading Images
+        //      console.log('CameraRoll pressed ', err);
+        //   });
 
 
         try {
@@ -59,9 +47,9 @@ export default class imagepreview extends Component {
     return (
         <KeyboardAvoidingView behavior="padding" enabled style={{paddingBottom: 5}}>
 
-
+{console.log(5050505050050505, this.state.photo)}
         <Image
-        source={require('./sample_silktop.jpeg')}
+        uri={this.state.photo}
             style={{
                 alignContent: 'center',
                 justifyContent: 'center',

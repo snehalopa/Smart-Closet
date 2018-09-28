@@ -1,9 +1,9 @@
 import React from 'react';
 import { FAB, Portal } from 'react-native-paper';
 import { CameraRoll, View, PermissionsAndroid, KeyboardAvoidingView, AsyncStorage } from 'react-native';
-import pickDevicePhotos from './pickDevicePhotos';
+//import pickDevicePhotos from './pickDevicePhotos';
 import { createStackNavigator } from 'react-navigation';
-import AddNewItem from './imagepreview';
+
 
 // const AppNavigator = createStackNavigator({
 //   form: {
@@ -20,6 +20,7 @@ export default class MyComponent extends React.Component {
       //do your stuff here. scroll screen up
       console.log('Save pressed ' + media);
       //write if else based on media whether gallery or campera to intent
+      
 
       try {
           const granted = await PermissionsAndroid.request(
@@ -54,8 +55,8 @@ export default class MyComponent extends React.Component {
             icon={this.state.open ? 'today' : 'add'}
             actions={[
               //{ icon: 'add', onPress: () => console.log('Pressed add') },
-              { icon: 'photo', label: 'Pick from Gallery', onPress: () => {this.props.navigation.navigate("ImagePreview")}},
-              { icon: 'camera', label: 'Take a Picture', onPress: () => this.onPressHandle('camera') },
+              { icon: 'photo', label: 'Pick from Gallery', onPress: () => {this.props.navigation.navigate("galleryBrowser")}},
+              { icon: 'camera', label: 'Take a Picture', onPress: () => this.props.navigation.navigate("cameraPreview") },
               //{ icon: 'notifications', label: 'Remind', onPress: () => console.log('Pressed notifications') },
             ]}
             onStateChange={({ open }) => this.setState({ open })}
